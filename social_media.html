@@ -1,0 +1,66 @@
+
+ <!DOCTYPE html>
+ <html lang="hy">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>QR կոդի ստեղծում</title>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             text-align: center;
+             margin-top: 50px;
+         }
+         input {
+             width: 300px;
+             padding: 10px;
+             margin-bottom: 20px;
+         }
+         #qrcode {
+        
+             margin-top: 20px;
+         }
+     </style>
+ </head>
+ <body>
+ 
+     <h1>QR կոդի ստեղծում</h1>
+     <h2>Կայքի նպատակն է ստեղծել QR code-եր տարբեր հղումներից </h2>
+     <h3> Կայքի հեղինակ Արեն Չիբուխչյան</h3>
+     <p>Մուտքագրեք հղումը և սեղմեք կոճակը:</p>
+     
+     <input type="text" id="urlInput" placeholder="Մուտքագրեք հղումը այստեղ...">
+     <br>
+     <button onclick="generateQRCode()">Ստեղծել QR կոդ</button>
+ 
+     <div id="qrcode"></div>
+ 
+     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+     <script>
+
+        //հիմնական ֆունկցիան անում է այս կոդը որը ստեղծում է ՔՌ կոդը հղումից//
+
+         function generateQRCode() {
+             const url = document.getElementById('urlInput').value;
+ 
+             if (url === '') {
+                 alert('Խնդրում ենք մուտքագրել հղումը!');
+                 return;
+             }
+ 
+             // Մաքրում ենք նախկինում ստեղծված QR կոդը
+             document.getElementById('qrcode').innerHTML = '';
+ 
+             // Ստեղծում ենք նոր QR կոդ
+             const qrcode = new QRCode(document.getElementById('qrcode'), {
+                 text: url,
+                 width: 250,
+                 height: 250,
+             });
+         }
+     </script>
+ 
+ </body>
+ </html>
+
+     
